@@ -4,78 +4,102 @@ Este projeto configura e implementa um sistema de monitoramento utilizando Prome
 
 ## Visão Geral
 
-Este projeto tem como objetivo configurar um sistema de monitoramento robusto para aplicações e servidores. Utilizamos Prometheus para coletar métricas, Grafana para visualização e Kubernetes para orquestração e gerenciamento de contêineres.
+Meu objetivo com este projeto é configurar um sistema de monitoramento robusto para aplicações e servidores. Utilizo o Prometheus para coletar métricas, o Grafana para visualização e o Kubernetes para orquestração e gerenciamento de contêineres.
 
 ## Estrutura do Projeto
 
-- **Dockerfile**: Arquivo de definição do contêiner Docker para a aplicação.
-- **README.md**: Este arquivo, contendo a documentação do projeto.
-- **app.js**: Código da aplicação.
-- **build.sh**: Script para construção do contêiner Docker.
-- **deploy.sh**: Script para deploy da aplicação no Kubernetes.
-- **deployment.yaml**: Arquivo de configuração do deployment no Kubernetes.
-- **service-loadbalancer.yaml**: Arquivo de configuração do serviço com load balancer no Kubernetes.
-- **service.yaml**: Arquivo de configuração do serviço no Kubernetes.
-- **observacoes.md**: Notas e observações diversas.
-- **package.json e package-lock.json**: Arquivos de configuração do projeto Node.js.
-- **requirements.txt**: Arquivo de dependências do projeto.
+Dockerfile: Arquivo de definição do contêiner Docker para a aplicação.
+
+README.md: Este arquivo, contendo a documentação do projeto.
+
+app.js: Código da aplicação.
+
+build.sh: Script para construção do contêiner Docker.
+
+deploy.sh: Script para deploy da aplicação no Kubernetes.
+
+deployment.yaml: Arquivo de configuração do deployment no Kubernetes.
+
+service-loadbalancer.yaml: Arquivo de configuração do serviço com load balancer no Kubernetes.
+
+service.yaml: Arquivo de configuração do serviço no Kubernetes.
+
+observacoes.md: Notas e observações diversas.
+
+package.json e package-lock.json: Arquivos de configuração do projeto Node.js.
+
+requirements.txt: Arquivo de dependências do projeto.
 
 ## Configuração e Implementação
 
-### 1. Configuração Inicial
+1. Configuração Inicial
 
-- **Inicialização do Repositório Git**:
-  - Inicializamos um repositório Git para o projeto e configuramos o repositório remoto.
+Inicialização do Repositório Git:
 
-### 2. Implementação do Monitoramento
+Inicializei um repositório Git para o projeto e configurei o repositório remoto.
 
-- **Prometheus**:
-  - Configuramos o Prometheus para coletar métricas da aplicação e do servidor.
-  - Adicionamos configurações no arquivo `prometheus.yml` para coletar métricas relevantes.
+2. Implementação do Monitoramento
 
-- **Node Exporter**:
-  - Configuramos o Node Exporter para expor métricas do sistema (CPU, memória, etc.).
-  
-- **Grafana**:
-  - Configuramos o Grafana para visualizar as métricas coletadas pelo Prometheus.
-  - Criamos dashboards personalizados para monitorar o desempenho do sistema.
+Prometheus:
 
-### 3. Implementação de Ações Corretivas
+Configurei o Prometheus para coletar métricas da aplicação e do servidor.
 
-- **Otimização de Código**:
-  - Revisamos e refatoramos partes do código da aplicação para melhorar a eficiência e desempenho.
+Adicionei configurações no arquivo prometheus.yml para coletar métricas relevantes.
 
-- **Ajustes no Servidor**:
-  - Configuramos um balanceador de carga (ex.: Nginx, HAProxy) para distribuir o tráfego entre múltiplos servidores.
-  - Aplicamos técnicas de caching para reduzir a carga no servidor.
+Node Exporter:
 
-- **Escalabilidade Horizontal**:
-  - Configuramos mais instâncias da aplicação usando contêineres (Docker) e Kubernetes.
-  - Realizamos testes de carga para verificar a escalabilidade horizontal do sistema.
+Configurei o Node Exporter para expor métricas do sistema (CPU, memória, etc.).
 
-### 4. Monitoramento Contínuo e Ajustes Futuros
+Grafana:
 
-- **Monitoramento Contínuo**:
-  - Mantemos um monitoramento contínuo das métricas relevantes através dos dashboards no Grafana.
-  - Ajustamos consultas e gráficos conforme necessário para obter insights mais precisos.
+Configurei o Grafana para visualizar as métricas coletadas pelo Prometheus.
 
-- **Configuração de Alertas**:
-  - Configuramos alertas no Grafana para monitorar picos de CPU e outras métricas críticas.
+Criei dashboards personalizados para monitorar o desempenho do sistema.
 
-### 5. Documentação
+3. Implementação de Ações Corretivas
 
-- **Documentação Detalhada**:
-  - Criamos documentação detalhada para cada etapa do projeto, incluindo capturas de tela dos gráficos e descrições das ações corretivas.
+Otimização de Código:
+
+Revisei e refatorei partes do código da aplicação para melhorar a eficiência e desempenho.
+
+Ajustes no Servidor:
+
+Configurei um balanceador de carga (ex.: Nginx, HAProxy) para distribuir o tráfego entre múltiplos servidores.
+
+Apliquei técnicas de caching para reduzir a carga no servidor.
+
+Escalabilidade Horizontal:
+
+Configurei mais instâncias da aplicação usando contêineres (Docker) e Kubernetes.
+
+Realizei testes de carga para verificar a escalabilidade horizontal do sistema.
+
+4. Monitoramento Contínuo e Ajustes Futuros
+
+Monitoramento Contínuo:
+
+Mantenho um monitoramento contínuo das métricas relevantes através dos dashboards no Grafana.
+
+Ajusto consultas e gráficos conforme necessário para obter insights mais precisos.
+
+Configuração de Alertas:
+
+Configurei alertas no Grafana para monitorar picos de CPU e outras métricas críticas.
+
+5. Documentação
+
+Documentação Detalhada:
+
+Criei documentação detalhada para cada etapa do projeto, incluindo capturas de tela dos gráficos e descrições das ações corretivas.
 
 ## Próximos Passos
 
-1. Continuar monitorando o sistema e ajustar configurações conforme necessário.
-2. Compartilhar conhecimentos adquiridos através de apresentações ou artigos de blog.
+Continuar monitorando o sistema e ajustar configurações conforme necessário.
+
+Compartilhar os conhecimentos adquiridos através de apresentações ou artigos de blog.
 
 ## Conclusão
 
-Este projeto de monitoramento de sistema proporciona uma visão abrangente e detalhada do desempenho da aplicação e do servidor, permitindo identificar e corrigir problemas de forma eficaz.
-
----
+Com este projeto de monitoramento de sistema, consigo obter uma visão abrangente e detalhada do desempenho da aplicação e do servidor, permitindo identificar e corrigir problemas de forma eficaz.
 
 
