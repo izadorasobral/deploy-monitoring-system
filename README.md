@@ -1,105 +1,101 @@
 # Projeto de Monitoramento de Sistema
 
-Este projeto configura e implementa um sistema de monitoramento utilizando Prometheus, Grafana e Kubernetes.
+Este projeto configura e implementa um sistema de monitoramento utilizando Prometheus, Grafana e Kubernetes. O objetivo é garantir a observabilidade e a escalabilidade da aplicação por meio da coleta, análise e visualização de métricas.
 
 ## Visão Geral
 
-Meu objetivo com este projeto é configurar um sistema de monitoramento robusto para aplicações e servidores. Utilizo o Prometheus para coletar métricas, o Grafana para visualização e o Kubernetes para orquestração e gerenciamento de contêineres.
+O sistema é composto pelos seguintes componentes principais:
+- **Prometheus**: Coleta e armazena métricas da aplicação e do servidor.
+- **Grafana**: Visualização e análise das métricas coletadas.
+- **Kubernetes**: Orquestração e gerenciamento dos contêineres da aplicação.
+- **Node Exporter**: Exporta métricas do sistema, como CPU, memória e uso de disco.
 
 ## Estrutura do Projeto
 
-Dockerfile: Arquivo de definição do contêiner Docker para a aplicação.
-
-README.md: Este arquivo, contendo a documentação do projeto.
-
-app.js: Código da aplicação.
-
-build.sh: Script para construção do contêiner Docker.
-
-deploy.sh: Script para deploy da aplicação no Kubernetes.
-
-deployment.yaml: Arquivo de configuração do deployment no Kubernetes.
-
-service-loadbalancer.yaml: Arquivo de configuração do serviço com load balancer no Kubernetes.
-
-service.yaml: Arquivo de configuração do serviço no Kubernetes.
-
-observacoes.md: Notas e observações diversas.
-
-package.json e package-lock.json: Arquivos de configuração do projeto Node.js.
-
-requirements.txt: Arquivo de dependências do projeto.
+```
+├── kubernetes/
+│   ├── deployment.yaml          # Configuração do deployment no Kubernetes
+│   ├── service-loadbalancer.yaml # Configuração do serviço com LoadBalancer
+│   ├── service.yaml             # Configuração do serviço no Kubernetes
+├── scripts/
+│   ├── build.sh                 # Script para construção do contêiner Docker
+│   ├── deploy.sh                # Script para deploy no Kubernetes
+├── app/
+│   ├── app.js                   # Código da aplicação
+│   ├── package.json             # Dependências do projeto Node.js
+│   ├── package-lock.json        # Lockfile do Node.js
+├── monitoring/
+│   ├── prometheus.yml           # Configuração do Prometheus
+│   ├── grafana-dashboard.json   # Configuração do dashboard no Grafana
+├── Dockerfile                   # Definição do contêiner Docker
+├── Makefile                      # Comandos para facilitar o uso do projeto
+├── README.md                     # Documentação do projeto
+```
 
 ## Configuração e Implementação
 
-1. Configuração Inicial
+### 1. Configuração Inicial
 
-Inicialização do Repositório Git:
+1. Clone este repositório:
+   ```sh
+   git clone https://github.com/izadorasobral/deploy-monitoring-system.git
+   cd deploy-monitoring-system
+   ```
+2. Configure o ambiente instalando as dependências necessárias:
+   ```sh
+   sudo apt update && sudo apt install -y docker.io kubectl
+   ```
+3. Inicialize um cluster Kubernetes (se necessário):
+   ```sh
+   minikube start
+   ```
 
-Inicializei um repositório Git para o projeto e configurei o repositório remoto.
+### 2. Deploy da Aplicação
 
-2. Implementação do Monitoramento
+1. Construa a imagem Docker:
+   ```sh
+   make build
+   ```
+2. Faça o deploy no Kubernetes:
+   ```sh
+   make deploy
+   ```
+3. Verifique os pods em execução:
+   ```sh
+   kubectl get pods
+   ```
 
-Prometheus:
+### 3. Configuração do Monitoramento
 
-Configurei o Prometheus para coletar métricas da aplicação e do servidor.
+#### Prometheus
+- Configurado para coletar métricas da aplicação e do sistema.
+- Arquivo de configuração: `monitoring/prometheus.yml`.
+- Para acessar o Prometheus, execute:
+  ```sh
+  kubectl port-forward svc/prometheus-service 9090:9090
+  ```
 
-Adicionei configurações no arquivo prometheus.yml para coletar métricas relevantes.
+#### Grafana
+- Configurado para visualizar as métricas coletadas pelo Prometheus.
+- Dashboard customizado incluído no repositório (`monitoring/grafana-dashboard.json`).
+- Para acessar o Grafana:
+  ```sh
+  kubectl port-forward svc/grafana-service 3000:3000
+  ```
+- Usuário padrão: `admin`, senha: `admin` (alterável no setup).
 
-Node Exporter:
-
-Configurei o Node Exporter para expor métricas do sistema (CPU, memória, etc.).
-
-Grafana:
-
-Configurei o Grafana para visualizar as métricas coletadas pelo Prometheus.
-
-Criei dashboards personalizados para monitorar o desempenho do sistema.
-
-3. Implementação de Ações Corretivas
-
-Otimização de Código:
-
-Revisei e refatorei partes do código da aplicação para melhorar a eficiência e desempenho.
-
-Ajustes no Servidor:
-
-Configurei um balanceador de carga (ex.: Nginx, HAProxy) para distribuir o tráfego entre múltiplos servidores.
-
-Apliquei técnicas de caching para reduzir a carga no servidor.
-
-Escalabilidade Horizontal:
-
-Configurei mais instâncias da aplicação usando contêineres (Docker) e Kubernetes.
-
-Realizei testes de carga para verificar a escalabilidade horizontal do sistema.
-
-4. Monitoramento Contínuo e Ajustes Futuros
-
-Monitoramento Contínuo:
-
-Mantenho um monitoramento contínuo das métricas relevantes através dos dashboards no Grafana.
-
-Ajusto consultas e gráficos conforme necessário para obter insights mais precisos.
-
-Configuração de Alertas:
-
-Configurei alertas no Grafana para monitorar picos de CPU e outras métricas críticas.
-
-5. Documentação
-
-Documentação Detalhada:
-
-Criei documentação detalhada para cada etapa do projeto, incluindo capturas de tela dos gráficos e descrições das ações corretivas.
+### 4. Monitoramento Contínuo e Alertas
+- **Configuração de alertas** no Grafana para picos de CPU e uso excessivo de memória.
+- **Dashboards customizados** para acompanhar desempenho em tempo real.
+- **Escalabilidade horizontal** utilizando Kubernetes para balanceamento de carga.
 
 ## Próximos Passos
+- Melhorar os dashboards do Grafana.
+- Adicionar logs estruturados usando Loki.
+- Criar um pipeline CI/CD com GitHub Actions para deploy automatizado.
 
-Continuar monitorando o sistema e ajustar configurações conforme necessário.
+## Contribuição
+Se quiser contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request!
 
-Compartilhar os conhecimentos adquiridos através de apresentações ou artigos de blog.
-
-## Conclusão
-
-Com este projeto de monitoramento de sistema, consigo obter uma visão abrangente e detalhada do desempenho da aplicação e do servidor, permitindo identificar e corrigir problemas de forma eficaz.
-
+---
 
