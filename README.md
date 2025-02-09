@@ -90,9 +90,25 @@ O sistema é composto pelos seguintes componentes principais:
 - **Escalabilidade horizontal** utilizando Kubernetes para balanceamento de carga.
 
 ## Próximos Passos
-- Melhorar os dashboards do Grafana.
-- Adicionar logs estruturados usando Loki.
-- Criar um pipeline CI/CD com GitHub Actions para deploy automatizado.
+- Verificar se o Prometheus está configurado corretamente no arquivo monitoring/prometheus.yml
+
+- Acessar o Prometheus via port-forwarding (kubectl port-forward svc/prometheus-service 9090:9090)
+
+- Verificar se o Grafana está configurado corretamente e se o dashboard customizado foi incluído (monitoring/grafana-dashboard.json)
+
+- Acessar o Grafana via port-forwarding (kubectl port-forward svc/grafana-service 3000:3000)
+
+- Configurar alertas no Grafana para picos de CPU e uso excessivo de memória
+
+- Criar dashboards customizados para acompanhar desempenho em tempo real
+
+-  Configurar a escalabilidade horizontal utilizando Kubernetes para balanceamento de carga
+
+- Melhorar os dashboards do Grafana
+
+- Adicionar logs estruturados usando Loki
+
+- Criar um pipeline CI/CD com GitHub Actions para deploy automatizado
 
 ## Contribuição
 Se quiser contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request!
