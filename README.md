@@ -90,7 +90,7 @@ O sistema é composto pelos seguintes componentes principais:
 - **Escalabilidade horizontal** utilizando Kubernetes para balanceamento de carga.
 
 ## Próximos Passos
-<<<<<<< HEAD
+
 - Melhorar os dashboards do Grafana.
 - Adicionar logs estruturados usando Loki.
 - Criar um pipeline CI/CD com GitHub Actions para deploy automatizado.
@@ -114,7 +114,6 @@ O sistema é composto pelos seguintes componentes principais:
 - Adicionar logs estruturados usando Loki
 
 - Criar um pipeline CI/CD com GitHub Actions para deploy automatizado
->>>>>>> a79f6dfd603497a238a8891f30e8c54f6f0dd05e
 
 ## Contribuição
 Se quiser contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request!
